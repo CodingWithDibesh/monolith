@@ -4,7 +4,7 @@
 
 This is a monorepo template for building full-stack applications with [Turborepo](https://turbo.build/repo). It includes a frontend and backend application, along with shared libraries and utilities. This template is a great starting point for building full-stack applications with TypeScript. It includes a Next.js frontend and NestJs backend, along with shared libraries and utilities.
 
-## Useing this repo
+## Using this repo
 
 Create a repository and follow the steps below to use this template project locally.
 
@@ -13,6 +13,28 @@ Create a repository and follow the steps below to use this template project loca
 3. Merge the template branch to your desired branch using `git merge template/[branch-name]`
 
 For more information follow the [Stack Overflow](https://stackoverflow.com/questions/56577184/github-pull-changes-from-a-template-repository) conversation for more details.
+
+## Setup
+
+To get started, install the dependencies and run following commands:
+
+```bash
+yarn 
+```
+
+This will install all the dependencies for the monorepo. Navigate to the `backend` and run the following command:
+
+```bash
+yarn setup
+```
+
+This will setup the docker containers for backend and run the migrations. Navigate back to root and run the following command:
+
+```bash
+yarn dev
+```
+
+This will start the frontend and backend servers.
 
 ## What's inside?
 

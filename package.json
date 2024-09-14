@@ -5,6 +5,11 @@
         "build": "turbo build",
         "dev": "turbo dev",
         "lint": "turbo lint",
+        "dev:frontend": "turbo run dev --filter=frontend",
+        "dev:ui": "turbo run dev --filter=ui",
+        "dev:backend": "turbo run dev --filter=backend",
+        "build:frontend": "turbo run build --filter=frontend",
+        "build:backend": "turbo run build --filter=backend",
         "format": "prettier --write \"**/*.{ts,tsx,md}\""
     },
     "devDependencies": {
