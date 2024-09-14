@@ -22,19 +22,13 @@ To get started, install the dependencies and run following commands:
 yarn 
 ```
 
-This will install all the dependencies for the monorepo. Navigate to the `backend` and run the following command:
-
-```bash
-yarn setup
-```
-
-This will setup the docker containers for backend and run the migrations. Navigate back to root and run the following command:
+This will install all the dependencies for the monorepo. Run the following command:
 
 ```bash
 yarn dev
 ```
 
-This will start the frontend and backend servers.
+This will start the frontend, Storybook and backend servers.
 
 ## What's inside?
 
