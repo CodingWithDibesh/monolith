@@ -12,8 +12,8 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Dibe.sh",
-  description: "My Portfolio",
+  title: "Monolith",
+  description: "A Monolith setup for applications",
 };
 
 export default function RootLayout({

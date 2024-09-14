@@ -1,5 +1,5 @@
 {
-    "name": "dibe.sh",
+    "name": "monolith",
     "private": true,
     "scripts": {
         "build": "turbo build",
