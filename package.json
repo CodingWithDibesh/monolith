@@ -3,13 +3,13 @@
     "private": true,
     "scripts": {
         "build": "turbo build",
-        "dev": "turbo dev",
+        "dev": "turbo dev --filter=frontend --filter=@repo/ui",
         "lint": "turbo lint",
-        "dev:frontend": "turbo run dev --filter=frontend",
+        "dev:fe": "turbo run dev --filter=frontend",
         "dev:ui": "turbo run dev --filter=ui",
-        "dev:backend": "turbo run dev --filter=backend",
-        "build:frontend": "turbo run build --filter=frontend",
-        "build:backend": "turbo run build --filter=backend",
+        "dev:be": "docker compose up",
+        "build:fe": "turbo run build --filter=frontend",
+        "build:be": "turbo run build --filter=backend",
         "format": "prettier --write \"**/*.{ts,tsx,md}\""
     },
     "devDependencies": {

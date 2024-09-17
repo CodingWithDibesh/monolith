@@ -10,7 +10,7 @@
   },
   "scripts": {
     "lint": "eslint . --max-warnings 0",
-    "dev": "storybook dev -p 6006",
+    "dev": "storybook dev -p 7004",
     "build": "storybook build"
   },
   "devDependencies": {
