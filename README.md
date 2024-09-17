@@ -28,6 +28,14 @@ To get started, install the dependencies and run following commands:
 yarn 
 ```
 
+### Ports Exposed
+
+- Frontend: [http://localhost:7000](http://localhost:7000)
+- Postgres: [http://localhost:7001](http://localhost:7001)
+- Backend: [http://localhost:7002](http://localhost:7002)
+- PGAdmin: [http://localhost:7003](http://localhost:7003)
+- Storybook: [http://localhost:7004](http://localhost:7004)
+
 ### Development
 
 This will install all the dependencies for the monorepo. Run the following command:
