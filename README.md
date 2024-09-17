@@ -1,6 +1,6 @@
 # Monolith
 
-![Javascript](https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E) ![Typescript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white) ![NestJS](https://img.shields.io/badge/nestjs-E0234E?style=for-the-badge&logo=nestjs&logoColor=white) ![NextJs](https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white) !["React"](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB) !["TailwindCSS"](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=whit) ![ReactQuery](https://img.shields.io/badge/React_Query-FF4154?style=for-the-badge&logo=ReactQuery&logoColor=white) ![Zod](https://img.shields.io/badge/Zod-000000?style=for-the-badge&logo=zod&logoColor=3068B7) ![Prisma](https://img.shields.io/badge/Prisma-3982CE?style=for-the-badge&logo=Prisma&logoColor=white)
+![Javascript](https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E) ![Typescript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white) ![NestJS](https://img.shields.io/badge/nestjs-E0234E?style=for-the-badge&logo=nestjs&logoColor=white) ![NextJs](https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white) !["React"](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB) !["TailwindCSS"](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=whit) ![ReactQuery](https://img.shields.io/badge/React_Query-FF4154?style=for-the-badge&logo=ReactQuery&logoColor=white) ![Zod](https://img.shields.io/badge/Zod-000000?style=for-the-badge&logo=zod&logoColor=3068B7) ![Prisma](https://img.shields.io/badge/Prisma-3982CE?style=for-the-badge&logo=Prisma&logoColor=white) ![Postgres](https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white)
 
 This is a monorepo template for building full-stack applications with [Turborepo](https://turbo.build/repo). It includes a frontend and backend application, along with shared libraries and utilities. This template is a great starting point for building full-stack applications with TypeScript. It includes a Next.js frontend and NestJs backend, along with shared libraries and utilities.
 
@@ -16,11 +16,19 @@ For more information follow the [Stack Overflow](https://stackoverflow.com/quest
 
 ## Setup
 
+Copy the `.env.example` file to `.env` and fill in the necessary environment variables.
+
+```bash
+cp .env.example .env
+```
+
 To get started, install the dependencies and run following commands:
 
 ```bash
 yarn 
 ```
+
+### Development
 
 This will install all the dependencies for the monorepo. Run the following command:
 
@@ -28,7 +36,47 @@ This will install all the dependencies for the monorepo. Run the following comma
 yarn dev
 ```
 
-This will start the frontend, Storybook and backend servers.
+This will start the frontend, Storybook.
+
+```bash
+yarn dev:be
+```
+
+Will initialize docker container and backend server. Docker container includes Postgres database, PGAdmin and Backend server.
+
+```bash
+yarn dev:fe
+```
+
+Will start the frontend server.
+
+```bash
+yarn dev:ui
+```
+
+Will start the Storybook server.
+
+### Build
+
+To build all apps and packages, run the following command:
+
+```bash
+yarn build
+```
+
+Will build all the packages and apps.
+
+```bash
+yarn build:be
+```
+
+Will build the backend application.
+
+```bash
+yarn build:fe
+```
+
+Will build the frontend application.
 
 ## What's inside?
 
@@ -54,22 +102,6 @@ Monolith has some additional tools already setup for you:
 - [TypeScript](https://www.typescriptlang.org/) for static type checking
 - [ESLint](https://eslint.org/) for code linting
 - [Prettier](https://prettier.io) for code formatting
-
-### Build
-
-To build all apps and packages, run the following command:
-
-```
-yarn build
-```
-
-### Develop
-
-To develop all apps and packages, run the following command:
-
-```
-yarn dev
-```
 
 ## Useful Links
 
