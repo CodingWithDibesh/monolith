@@ -4,6 +4,25 @@
 
 This is a monorepo template for building full-stack applications with [Turborepo](https://turbo.build/repo). It includes a frontend and backend application, along with shared libraries and utilities. This template is a great starting point for building full-stack applications with TypeScript. It includes a Next.js frontend and NestJs backend, along with shared libraries and utilities.
 
+## Table of Contents
+
+- [Monolith](#monolith)
+  - [Table of Contents](#table-of-contents)
+  - [Using this repo](#using-this-repo)
+  - [Setup](#setup)
+    - [Ports Exposed](#ports-exposed)
+    - [Development](#development)
+    - [Build](#build)
+  - [What's inside?](#whats-inside)
+    - [Apps and Packages](#apps-and-packages)
+    - [Utilities](#utilities)
+  - [Pirsma Operations](#pirsma-operations)
+    - [Creating a migration](#creating-a-migration)
+    - [Running a migration](#running-a-migration)
+    - [Generating Prisma Client](#generating-prisma-client)
+    - [Running Seeds](#running-seeds)
+  - [Useful Links](#useful-links)
+
 ## Using this repo
 
 Create a repository and follow the steps below to use this template project locally.
@@ -116,6 +135,7 @@ Monolith has some additional tools already setup for you:
 Here are some useful Prisma operations you can run in the monorepo.
 
 - [Monolith](#monolith)
+  - [Table of Contents](#table-of-contents)
   - [Using this repo](#using-this-repo)
   - [Setup](#setup)
     - [Ports Exposed](#ports-exposed)
