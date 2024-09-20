@@ -10,7 +10,7 @@ on:
 
 jobs:
   build_and_deploy_job:
-    if: startsWith(github.ref, 'refs/tags/v')
+    if: startsWith(github.ref, 'refs/tags/v') && github.ref_name == 'main'
     runs-on: ubuntu-latest
     name: Build and Deploy Job
 
@@ -27,12 +27,10 @@ jobs:
           node-version: '20' # Specify your Node.js version
 
       - name: Install dependencies
-        run: yarn install
-        working-directory: ./apps/frontend
+        run: yarn install --frozen-lockfile
 
       - name: Build the app
-        run: yarn build
-        working-directory: ./apps/frontend
+        run: yarn workspace frontend build
 
       - name: Deploy to Azure Static Web Apps
         id: builddeploy
