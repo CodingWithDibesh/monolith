@@ -10,8 +10,7 @@
   },
   "scripts": {
     "lint": "eslint . --max-warnings 0",
-    "dev": "storybook dev -p 7004",
-    "build": "storybook build"
+    "dev": "storybook dev -p 7004"
   },
   "devDependencies": {
     "@chromatic-com/storybook": "^1.9.0",

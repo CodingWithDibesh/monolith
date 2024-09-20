@@ -26,9 +26,11 @@ jobs:
 
       - name: Install dependencies
         run: yarn install --frozen-lockfile
+        working-directory: .
 
       - name: Build the app
-        run: yarn workspace frontend build
+        run: yarn build
+        working-directory: ./apps/frontend
 
       - name: Deploy to Azure Static Web Apps
         id: builddeploy
