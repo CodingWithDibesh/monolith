@@ -16,6 +16,7 @@ This is a monorepo template for building full-stack applications with [Turborepo
   - [What's inside?](#whats-inside)
     - [Apps and Packages](#apps-and-packages)
     - [Utilities](#utilities)
+  - [Running NestCLI commands](#running-nestcli-commands)
   - [Pirsma Operations](#pirsma-operations)
     - [Creating a migration](#creating-a-migration)
     - [Running a migration](#running-a-migration)
@@ -130,6 +131,14 @@ Monolith has some additional tools already setup for you:
 - [ESLint](https://eslint.org/) for code linting
 - [Prettier](https://prettier.io) for code formatting
 
+## Running NestCLI commands
+
+To run NestCLI commands, you can use the following command:
+
+```bash
+yarn workspace backend nest [nest command]
+```
+
 ## Pirsma Operations
 
 Here are some useful Prisma operations you can run in the monorepo.
@@ -144,6 +153,7 @@ Here are some useful Prisma operations you can run in the monorepo.
   - [What's inside?](#whats-inside)
     - [Apps and Packages](#apps-and-packages)
     - [Utilities](#utilities)
+  - [Running NestCLI commands](#running-nestcli-commands)
   - [Pirsma Operations](#pirsma-operations)
     - [Creating a migration](#creating-a-migration)
     - [Running a migration](#running-a-migration)
