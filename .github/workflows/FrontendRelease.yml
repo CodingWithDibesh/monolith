@@ -2,12 +2,15 @@
 name: Frontend Build and Deploy
 
 on:
+  push:
+    tags:
+      - 'v*.*.*' # Push events to matching v*.*.* tags
   release:
     types: [published]
 
 jobs:
   build_and_deploy_job:
-    if: github.ref == 'refs/heads/main'
+    if: github.ref == 'refs/heads/main' && github.ref_type == 'tag'
     runs-on: ubuntu-latest
     name: Build and Deploy Job
 
