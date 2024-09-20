@@ -19,12 +19,15 @@ RUN yarn install --frozen-lockfile
 # Step 5: Copy the backend source code
 COPY apps/backend ./apps/backend/
 
-# Step 6: Install NestJS CLI globally (optional)
+# Step 6: Generate Prisma Client
+RUN yarn workspace backend prisma generate
+
+# Step 7: Install NestJS CLI globally (optional)
 RUN yarn global add @nestjs/cli
 
 # Step 7: Set environment and expose port 7002
 ENV NODE_ENV=${NODE_ENV}
 EXPOSE ${PORT}
 
-# Step 8: Start the backend server
+# Step 9: Start the backend server
 CMD ["yarn", "workspace", "backend", "dev"]
