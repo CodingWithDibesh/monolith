@@ -29,7 +29,7 @@ This is a monorepo template for building full-stack applications with [Turborepo
 
 Create a repository and follow the steps below to use this template project locally.
 
-1. Add template on your existing repo using `git remote add template  https://github.com/mealswow/monolith.git` command.
+1. Add template on your existing repo using `git remote add template  https://github.com/CodingWithDibesh/monolith.git` command.
 2. Fetch the template repo using `git fetch template` command.
 3. Merge the template branch to your desired branch using `git merge template/[branch-name]`
 
