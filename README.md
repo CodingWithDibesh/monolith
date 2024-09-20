@@ -111,6 +111,23 @@ Monolith has some additional tools already setup for you:
 - [ESLint](https://eslint.org/) for code linting
 - [Prettier](https://prettier.io) for code formatting
 
+## Creating a migration
+
+Make sure you have the necessary environment variables set in the `.env` file, and the database is running.
+To create a migration, run the following command:
+
+```bash
+yarn workspace backend prisma migrate dev --name [migration name]
+```
+
+## Running a migration
+
+To run a migration, run the following command:
+
+```bash
+yarn workspace backend prisma migrate deploy
+```
+
 ## Useful Links
 
 Learn more about the power of Turborepo:
