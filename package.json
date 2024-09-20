@@ -8,7 +8,7 @@
         "lint": "turbo lint",
         "dev:fe": "turbo run dev --filter=frontend",
         "dev:ui": "turbo run dev --filter=ui",
-        "dev:be": "docker compose up",
+        "dev:be": "node ./setup-symlink.js && docker compose up",
         "build:fe": "turbo run build --filter=frontend",
         "build:be": "turbo run build --filter=backend",
         "format": "prettier --write \"**/*.{ts,tsx,md}\""

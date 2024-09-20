@@ -4,6 +4,27 @@
 
 This is a monorepo template for building full-stack applications with [Turborepo](https://turbo.build/repo). It includes a frontend and backend application, along with shared libraries and utilities. This template is a great starting point for building full-stack applications with TypeScript. It includes a Next.js frontend and NestJs backend, along with shared libraries and utilities.
 
+## Table of Contents
+
+- [Monolith](#monolith)
+  - [Table of Contents](#table-of-contents)
+  - [Using this repo](#using-this-repo)
+  - [Setup](#setup)
+    - [Ports Exposed](#ports-exposed)
+    - [Development](#development)
+    - [Build](#build)
+  - [What's inside?](#whats-inside)
+    - [Apps and Packages](#apps-and-packages)
+    - [Utilities](#utilities)
+  - [Running NestCLI commands](#running-nestcli-commands)
+  - [Pirsma Operations](#pirsma-operations)
+    - [Creating a migration](#creating-a-migration)
+    - [Running a migration](#running-a-migration)
+    - [Generating Prisma Client](#generating-prisma-client)
+    - [Running Seeds](#running-seeds)
+  - [Bruno Setup](#bruno-setup)
+  - [Useful Links](#useful-links)
+
 ## Using this repo
 
 Create a repository and follow the steps below to use this template project locally.
@@ -110,6 +131,74 @@ Monolith has some additional tools already setup for you:
 - [TypeScript](https://www.typescriptlang.org/) for static type checking
 - [ESLint](https://eslint.org/) for code linting
 - [Prettier](https://prettier.io) for code formatting
+
+## Running NestCLI commands
+
+To run NestCLI commands, you can use the following command:
+
+```bash
+yarn workspace backend nest [nest command]
+```
+
+## Pirsma Operations
+
+Here are some useful Prisma operations you can run in the monorepo.
+
+- [Monolith](#monolith)
+  - [Table of Contents](#table-of-contents)
+  - [Using this repo](#using-this-repo)
+  - [Setup](#setup)
+    - [Ports Exposed](#ports-exposed)
+    - [Development](#development)
+    - [Build](#build)
+  - [What's inside?](#whats-inside)
+    - [Apps and Packages](#apps-and-packages)
+    - [Utilities](#utilities)
+  - [Running NestCLI commands](#running-nestcli-commands)
+  - [Pirsma Operations](#pirsma-operations)
+    - [Creating a migration](#creating-a-migration)
+    - [Running a migration](#running-a-migration)
+    - [Generating Prisma Client](#generating-prisma-client)
+    - [Running Seeds](#running-seeds)
+  - [Bruno Setup](#bruno-setup)
+  - [Useful Links](#useful-links)
+
+### Creating a migration
+
+Make sure you have the necessary environment variables set in the `.env` file, and the database is running.
+To create a migration, run the following command:
+
+```bash
+yarn workspace backend prisma migrate dev --name [migration name]
+```
+
+### Running a migration
+
+To run a migration, run the following command:
+
+```bash
+yarn workspace backend prisma migrate deploy
+```
+
+### Generating Prisma Client
+
+To generate the Prisma Client, run the following command:
+
+```bash
+yarn workspace backend prisma generate
+```
+
+### Running Seeds
+
+To seed the database, run the following command:
+
+```bash
+yarn workspace backend prisma db seed
+```
+
+## Bruno Setup
+
+To setup Bruno click open collections and browse the [bruno_docs](./apps/frontend/bruno_docs) folder and click open. You should see a monolith collection with all the requests.
 
 ## Useful Links
 

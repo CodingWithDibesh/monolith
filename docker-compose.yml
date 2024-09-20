@@ -5,12 +5,13 @@ services:
       context: .
       dockerfile: ./apps/backend/Dockerfile
     env_file:
-      - .env 
+       - ./apps/backend/.env
     volumes:
       - ./apps/backend:/app/apps/backend
       - ./packages/shared:/app/packages/shared
       - ./packages/schemas:/app/packages/schemas
       - ./yarn.lock:/app/yarn.lock
+      - ./apps/backend/.env:/app/apps/backend/.env
     ports:
       - '${PORT}:${PORT}'
     environment:
@@ -24,10 +25,12 @@ services:
       POSTGRES_USER: ${POSTGRES_USER}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
       POSTGRES_DB: ${POSTGRES_DB}
+      DATABASE_URL: ${DATABASE_URL}
+      POSTGRESS_EXPOSE_PORT=7001: ${POSTGRESS_EXPOSE_PORT}
     volumes:
       - monolith_db:/var/lib/postgresql/data
     ports:
-      - '${POSTGRES_PORT}:${POSTGRES_PORT}'
+      - '${POSTGRESS_EXPOSE_PORT}:${POSTGRES_PORT}'
       
   pgadmin:
     image: dpage/pgadmin4
