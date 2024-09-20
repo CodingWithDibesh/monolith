@@ -22,6 +22,7 @@ This is a monorepo template for building full-stack applications with [Turborepo
     - [Running a migration](#running-a-migration)
     - [Generating Prisma Client](#generating-prisma-client)
     - [Running Seeds](#running-seeds)
+  - [Bruno Setup](#bruno-setup)
   - [Useful Links](#useful-links)
 
 ## Using this repo
@@ -159,6 +160,7 @@ Here are some useful Prisma operations you can run in the monorepo.
     - [Running a migration](#running-a-migration)
     - [Generating Prisma Client](#generating-prisma-client)
     - [Running Seeds](#running-seeds)
+  - [Bruno Setup](#bruno-setup)
   - [Useful Links](#useful-links)
 
 ### Creating a migration
@@ -193,6 +195,10 @@ To seed the database, run the following command:
 ```bash
 yarn workspace backend prisma db seed
 ```
+
+## Bruno Setup
+
+To setup Bruno click open collections and browse the [bruno_docs](./apps/frontend/bruno_docs) folder and click open. You should see a monolith collection with all the requests.
 
 ## Useful Links
 
