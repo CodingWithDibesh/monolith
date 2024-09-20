@@ -2,7 +2,7 @@
 
 ![Javascript](https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E) ![Typescript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white) ![NestJS](https://img.shields.io/badge/nestjs-E0234E?style=for-the-badge&logo=nestjs&logoColor=white) ![NextJs](https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white) !["React"](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB) !["TailwindCSS"](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=whit) ![ReactQuery](https://img.shields.io/badge/React_Query-FF4154?style=for-the-badge&logo=ReactQuery&logoColor=white) ![Zod](https://img.shields.io/badge/Zod-000000?style=for-the-badge&logo=zod&logoColor=3068B7) ![Postgres](https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white)
 
-This is a monorepo template for building full-stack applications with [Turborepo](https://turbo.build/repo). It includes a frontend and backend application, along with shared libraries and utilities. This template is a great starting point for building full-stack applications with TypeScript. It includes a Next.js frontend and NestJs backend, along with shared libraries and utilities.
+This is a mono repo template for building full-stack applications with [Turborepo](https://turbo.build/repo). It includes a frontend and backend application, shared libraries, and utilities. This template is a great starting point for building full-stack applications with TypeScript. It consists of a Next.js frontend, NestJs backend, shared libraries, and utilities.
 
 ## Table of Contents
 
@@ -29,7 +29,7 @@ This is a monorepo template for building full-stack applications with [Turborepo
 
 Create a repository and follow the steps below to use this template project locally.
 
-1. Add template on your existing repo using `git remote add template  https://github.com/CodingWithDibesh/monolith.git` command.
+1. Add template on your existing repo using `git remote add template https://github.com/CodingWithDibesh/monolith.git` command.
 2. Fetch the template repo using `git fetch template` command.
 3. Merge the template branch to your desired branch using `git merge template/[branch-name]`
 
@@ -59,7 +59,7 @@ yarn
 
 ### Development
 
-This will install all the dependencies for the monorepo. Run the following command:
+Run the following command:
 
 ```bash
 yarn dev
@@ -71,19 +71,19 @@ This will start the frontend, Storybook.
 yarn dev:be
 ```
 
-Will initialize docker container and backend server. Docker container includes Postgres database, PGAdmin and Backend server.
+This command will initialize the docker container and backend server. Docker container includes Postgres database, PGAdmin and Backend server.
 
 ```bash
 yarn dev:fe
 ```
 
-Will start the frontend server.
+This command will start the frontend server.
 
 ```bash
 yarn dev:ui
 ```
 
-Will start the Storybook server.
+This command will start the Storybook server.
 
 ### Build
 
@@ -93,19 +93,19 @@ To build all apps and packages, run the following command:
 yarn build
 ```
 
-Will build all the packages and apps.
+This command will build all the packages and apps.
 
 ```bash
 yarn build:be
 ```
 
-Will build the backend application.
+This command will build the backend application.
 
 ```bash
 yarn build:fe
 ```
 
-Will build the frontend application.
+This command will build the frontend application.
 
 ## What's inside?
 
@@ -126,7 +126,7 @@ Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
 
 ### Utilities
 
-Monolith has some additional tools already setup for you:
+Monolith has some additional tools already set for you:
 
 - [TypeScript](https://www.typescriptlang.org/) for static type checking
 - [ESLint](https://eslint.org/) for code linting
@@ -144,24 +144,10 @@ yarn workspace backend nest [nest command]
 
 Here are some useful Prisma operations you can run in the monorepo.
 
-- [Monolith](#monolith)
-  - [Table of Contents](#table-of-contents)
-  - [Using this repo](#using-this-repo)
-  - [Setup](#setup)
-    - [Ports Exposed](#ports-exposed)
-    - [Development](#development)
-    - [Build](#build)
-  - [What's inside?](#whats-inside)
-    - [Apps and Packages](#apps-and-packages)
-    - [Utilities](#utilities)
-  - [Running NestCLI commands](#running-nestcli-commands)
-  - [Pirsma Operations](#pirsma-operations)
-    - [Creating a migration](#creating-a-migration)
-    - [Running a migration](#running-a-migration)
-    - [Generating Prisma Client](#generating-prisma-client)
-    - [Running Seeds](#running-seeds)
-  - [Bruno Setup](#bruno-setup)
-  - [Useful Links](#useful-links)
+  - [Creating a migration](#creating-a-migration)
+  - [Running a migration](#running-a-migration)
+  - [Generating Prisma Client](#generating-prisma-client)
+  - [Running Seeds](#running-seeds)
 
 ### Creating a migration
 
