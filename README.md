@@ -111,7 +111,27 @@ Monolith has some additional tools already setup for you:
 - [ESLint](https://eslint.org/) for code linting
 - [Prettier](https://prettier.io) for code formatting
 
-## Creating a migration
+## Pirsma Operations
+
+Here are some useful Prisma operations you can run in the monorepo.
+
+- [Monolith](#monolith)
+  - [Using this repo](#using-this-repo)
+  - [Setup](#setup)
+    - [Ports Exposed](#ports-exposed)
+    - [Development](#development)
+    - [Build](#build)
+  - [What's inside?](#whats-inside)
+    - [Apps and Packages](#apps-and-packages)
+    - [Utilities](#utilities)
+  - [Pirsma Operations](#pirsma-operations)
+    - [Creating a migration](#creating-a-migration)
+    - [Running a migration](#running-a-migration)
+    - [Generating Prisma Client](#generating-prisma-client)
+    - [Running Seeds](#running-seeds)
+  - [Useful Links](#useful-links)
+
+### Creating a migration
 
 Make sure you have the necessary environment variables set in the `.env` file, and the database is running.
 To create a migration, run the following command:
@@ -120,12 +140,28 @@ To create a migration, run the following command:
 yarn workspace backend prisma migrate dev --name [migration name]
 ```
 
-## Running a migration
+### Running a migration
 
 To run a migration, run the following command:
 
 ```bash
 yarn workspace backend prisma migrate deploy
+```
+
+### Generating Prisma Client
+
+To generate the Prisma Client, run the following command:
+
+```bash
+yarn workspace backend prisma generate
+```
+
+### Running Seeds
+
+To seed the database, run the following command:
+
+```bash
+yarn workspace backend prisma db seed
 ```
 
 ## Useful Links
