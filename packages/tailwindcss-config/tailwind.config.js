@@ -5,6 +5,7 @@ module.exports = {
         '../../apps/frontend/**/*.{js,ts,jsx,tsx,mdx}',
 
         "./src/**/*.{js,ts,jsx,tsx}",
+        "!./node_modules/**",
     ],
     theme: {
         extend: {},
