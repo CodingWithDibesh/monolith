@@ -1,4 +1,4 @@
-import { Button } from "@repo/src/Atoms"
+import { Button } from "@repo/ui/src/Atoms"
 
 export default function Home() {
   return (
