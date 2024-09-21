@@ -1,3 +1,5 @@
+# .github/workflows/azure-deploy.yml
+
 name: Azure Static Web Apps CI/CD
 
 on:
@@ -13,7 +15,8 @@ jobs:
 
     steps:
       # 1. Checkout the repository
-      - uses: actions/checkout@v3
+      - name: Checkout Repository
+        uses: actions/checkout@v3
         with:
           submodules: true
           lfs: false
@@ -41,8 +44,7 @@ jobs:
           azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_AGREEABLE_TREE_0A9605800 }}
           repo_token: ${{ secrets.GITHUB_TOKEN }} # Used for GitHub integrations (i.e., PR comments)
           action: "upload"
-          app_location: "./apps/frontend"            # Path to your Next.js app
-          output_location: "./apps/frontend/.next"   # Path to the build output
+          app_location: "./apps/frontend"           # Path to your Next.js app
+          output_location: ".next"                   # Path to the build output, relative to app_location
           skip_app_build: true                        # Skip Azure's build since we've already built it
           skip_api_build: true                        # Skip API build if you have no APIs
-
