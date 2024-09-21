@@ -1,4 +1,3 @@
-# Build and deploy the frontend app to Azure Static Web Apps
 name: Frontend Build and Deploy
 
 on:
@@ -33,15 +32,18 @@ jobs:
         run: yarn workspace frontend build
         working-directory: ./apps/frontend
 
-      - name: Deploy to Azure Static Web Apps
+      - name: Zip build files
+        run: zip -r build.zip .next
+        working-directory: ./apps/frontend
+
+      - name: Upload zipped build to Azure
         uses: Azure/static-web-apps-deploy@v1
         id: deploy
         with:
           action: "upload"
-          azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_BLACK_WAVE_0F9BACA10 }}
+          azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_BLACK_WAVE_0F9BACA10  }}
           repo_token: ${{ secrets.GITHUB_TOKEN }}
-          api_location: ""           # Azure location where your API is deployed
-          app_location: "./apps/frontend"   # Where the codebase is located
-          output_location: ".next"          # The directory where the build output is generated
+          app_location: "./apps/frontend/build.zip"   # Zipped file location
+          output_location: ".next"                    # Unzip location
           skip_app_build: true
           skip_api_build: true
