@@ -9,7 +9,6 @@ on:
 
 jobs:
   build_and_deploy_job:
-    if: github.event_name == 'push'
     runs-on: ubuntu-latest
     name: Build and Deploy Job
 
@@ -34,10 +33,18 @@ jobs:
 
       # 4. Build the Next.js Application
       - name: Build Frontend
-        run: yarn workspace frontend build
-        # Ensure that your frontend workspace has a 'build' script in its package.json
+        working-directory: ./apps/frontend
+        run: yarn build
 
-      # 5. Deploy to Azure Static Web Apps
+      # 5. Verify Build Output
+      - name: Verify Build Output
+        run: ls -la ./apps/frontend/.next
+
+      # 6. Set Node.js Version for Azure (Optional)
+      - name: Set Node.js Version for Azure
+        run: echo "NODE_VERSION=20" >> $GITHUB_ENV
+
+      # 7. Deploy to Azure Static Web Apps
       - name: Deploy to Azure Static Web Apps
         uses: Azure/static-web-apps-deploy@v1
         with:
