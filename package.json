@@ -25,5 +25,8 @@
     "workspaces": [
         "apps/*",
         "packages/*"
-    ]
+    ],
+    "dependencies": {
+        "autoprefixer": "^10.4.20"
+    }
 }
