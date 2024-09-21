@@ -28,18 +28,27 @@ jobs:
         run: yarn install --frozen-lockfile
         working-directory: ./apps/frontend
 
+      - name: Install sharp package for Next.js
+        run: yarn add sharp
+        working-directory: ./apps/frontend
+
+      - name: Remove dev dependencies
+        run: yarn install --production
+        working-directory: ./apps/frontend
+
       - name: Build the app
         run: yarn workspace frontend build
         working-directory: ./apps/frontend
 
       - name: Deploy to Azure Static Web Apps
         uses: Azure/static-web-apps-deploy@v1
+        id: deploy
         with:
           action: "upload"
           azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_BLACK_WAVE_0F9BACA10 }}
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           api_location: ""           # Azure location where your API is deployed
-          app_location: "./apps/frontend"   # Where the codebase is located
-          output_location: ".next"          # The directory where the build output is generated
+          app_location: "./apps/frontend/.next"   # Where the codebase is located
+          output_location: ""          # The directory where the build output is generated
           skip_app_build: true
           skip_api_build: true
