@@ -29,7 +29,7 @@ jobs:
         working-directory: ./apps/frontend
 
       - name: Build the app
-        run: yarn workspace build frontend
+        run: yarn workspace frontend build
         working-directory: ./apps/frontend
 
       - name: Deploy to Azure Static Web Apps
