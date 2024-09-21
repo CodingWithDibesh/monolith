@@ -6,6 +6,17 @@ on:
   push:
     branches:
       - main
+    paths:
+      - 'apps/frontend/**'
+      - 'yarn.lock'
+      - '.github/workflows/**'
+  pull_request:
+    branches:
+      - main
+    paths:
+      - 'apps/frontend/**'
+      - 'yarn.lock'
+      - '.github/workflows/**'
 
 jobs:
   build_and_deploy_job:
@@ -27,31 +38,43 @@ jobs:
           node-version: '20'
           cache: 'yarn'
 
-      # 3. Install Dependencies
+      # 3. Cache Yarn dependencies
+      - name: Cache Yarn Dependencies
+        uses: actions/cache@v3
+        with:
+          path: |
+            ~/.cache/yarn
+            apps/frontend/node_modules
+            apps/shared/node_modules
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
+
+      # 4. Install Dependencies
       - name: Install Dependencies
         run: yarn install --frozen-lockfile
 
-      # 4. Build the Next.js Application
+      # 5. Build the Next.js Application
       - name: Build Frontend
         working-directory: ./apps/frontend
         run: yarn build
 
-      # 5. Verify Build Output
+      # 6. Verify Build Output
       - name: Verify Build Output
         run: ls -la ./apps/frontend/.next
 
-      # 6. Set Node.js Version for Azure (Optional)
+      # 7. Set Node.js Version for Azure (Optional)
       - name: Set Node.js Version for Azure
         run: echo "NODE_VERSION=20" >> $GITHUB_ENV
 
-      # 7. Deploy to Azure Static Web Apps
+      # 8. Deploy to Azure Static Web Apps
       - name: Deploy to Azure Static Web Apps
-        uses: Azure/static-web-apps-deploy@v1
+        uses: Azure/static-web-apps-deploy@latest
         with:
           azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_AGREEABLE_TREE_0A9605800 }}
           repo_token: ${{ secrets.GITHUB_TOKEN }} # Used for GitHub integrations (i.e., PR comments)
           action: "upload"
-          app_location: "./apps/frontend"           # Path to your Next.js app
-          output_location: ".next"                   # Path to the build output, relative to app_location
-          skip_app_build: true                        # Skip Azure's build since we've already built it
-          skip_api_build: true                        # Skip API build if you have no APIs
+          app_location: "apps/frontend"           # Path to your Next.js app (without './')
+          output_location: ".next"                 # Path to the build output, relative to app_location
+          skip_app_build: true                      # Skip Azure's build since we've already built it
+          skip_api_build: true                      # Skip API build if you have no APIs
