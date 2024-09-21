@@ -33,7 +33,6 @@ jobs:
         working-directory: ./apps/frontend
 
       - name: Deploy to Azure Static Web Apps
-        id: deploy
         uses: Azure/static-web-apps-deploy@v1
         with:
           action: "upload"
@@ -42,3 +41,5 @@ jobs:
           api_location: ""           # Azure location where your API is deployed
           app_location: "./apps/frontend"   # Where the codebase is located
           output_location: ".next"          # The directory where the build output is generated
+          skip_app_build: true
+          skip_api_build: true
