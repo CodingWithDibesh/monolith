@@ -28,14 +28,6 @@ jobs:
         run: yarn install --frozen-lockfile
         working-directory: ./apps/frontend
 
-      - name: Install sharp package for Next.js
-        run: yarn add sharp
-        working-directory: ./apps/frontend
-
-      - name: Remove dev dependencies
-        run: yarn install --production
-        working-directory: ./apps/frontend
-
       - name: Build the app
         run: yarn workspace frontend build
         working-directory: ./apps/frontend
