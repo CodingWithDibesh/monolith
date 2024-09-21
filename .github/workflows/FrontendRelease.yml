@@ -33,7 +33,7 @@ jobs:
         working-directory: ./apps/frontend
 
       - name: Deploy to Azure Static Web Apps
-        id: builddeploy
+        id: deploy
         uses: Azure/static-web-apps-deploy@v1
         with:
           action: "upload"
