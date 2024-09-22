@@ -23,6 +23,8 @@ This is a mono repo template for building full-stack applications with [Turborep
     - [Generating Prisma Client](#generating-prisma-client)
     - [Running Seeds](#running-seeds)
   - [Bruno Setup](#bruno-setup)
+  - [CI/CD](#cicd)
+    - [Frontend](#frontend)
   - [Useful Links](#useful-links)
 
 ## Using this repo
@@ -144,10 +146,10 @@ yarn workspace backend nest [nest command]
 
 Here are some useful Prisma operations you can run in the monorepo.
 
-  - [Creating a migration](#creating-a-migration)
-  - [Running a migration](#running-a-migration)
-  - [Generating Prisma Client](#generating-prisma-client)
-  - [Running Seeds](#running-seeds)
+- [Creating a migration](#creating-a-migration)
+- [Running a migration](#running-a-migration)
+- [Generating Prisma Client](#generating-prisma-client)
+- [Running Seeds](#running-seeds)
 
 ### Creating a migration
 
@@ -185,6 +187,64 @@ yarn workspace backend prisma db seed
 ## Bruno Setup
 
 To setup Bruno click open collections and browse the [bruno_docs](./apps/frontend/bruno_docs) folder and click open. You should see a monolith collection with all the requests.
+
+## CI/CD
+
+The CI/CD pipeline is set up using Github Actions. The pipeline includes the following steps:
+
+### Frontend
+
+1. Create an Azure Storage Account
+
+- Go to the Azure Portal.
+- Search for Storage Accounts in the search bar and click Create.
+- Select your resource group or create a new one.
+- Choose a Storage Account Name (this will be used as the subdomain for your static website).
+- Choose the Region closest to your users for better performance.
+- Under Performance, select Standard.
+- Choose StorageV2 (general-purpose v2) for the account kind.
+- Under Replication, choose Locally-redundant storage (LRS) for cost-efficiency.
+- Click Review + Create and then Create.
+
+1. Enable Static Website Hosting
+
+- Once the storage account is created, go to the Storage Account.
+- On the left panel, under Data Management, find Static Website.
+- Click Enable to turn on static website hosting.
+- Set the Index document name (e.g., index.html), and if necessary, the Error document path (e.g., 404.html).
+- Click Save.
+
+1. Getting Required keys
+
+Install the [Azure CLI](https://learn.microsoft.com/en-us/cli/azure/install-azure-cli) and login to your Azure account using the following command:
+
+```bash
+az login
+```
+
+1. Creating and assigning Role
+
+Create a new role assignment for the storage account using the following command:
+
+```bash
+az role assignment create --role "Storage Blob Data Contributor" --assignee <your-email> --scope /subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.Storage/storageAccounts/<storage-account-name>
+```
+
+1. Get the Storage Account Key
+
+Run the following command to get the storage account key:
+
+```bash
+az storage account keys list --account-name <storage-account-name> --resource-group <resource-group-name>
+```
+
+1. Add the Storage Account Key to Github Secrets
+
+Copy the `key1/key2` value and add it into github secrets under Secrets and Variables -> Actions -> Repository secrets.
+
+Create `AZURE_STORAGE_KEY` and paste the key value.
+
+Similarly, create `AZURE_STORAGE_ACCOUNT` and paste the storage account name.
 
 ## Useful Links
 
