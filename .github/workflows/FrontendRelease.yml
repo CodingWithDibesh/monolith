@@ -2,15 +2,21 @@ name: Frontend Release
 
 on:
     push:
+        tags:
+            - 'v*'       # Match tags like v1.0.0
+            - 'v*-alpha' # Match tags like v1.0.0-alpha
+            - 'v*-beta'  # Match tags like v1.0.0-beta
         branches:
-            - main
+          - main  # Only trigger on main branch pushes
         paths:
             - "apps/frontend/**"
+            - "apps/packages/**"
             - "yarn.lock"
             - ".github/workflows/**"
 
 jobs:
     build_and_deploy_job:
+        if: github.ref == 'refs/heads/main' || startsWith(github.ref, 'refs/tags/v')
         runs-on: ubuntu-latest
         name: Build and Deploy Job
 
@@ -44,8 +50,13 @@ jobs:
               uses: azure/CLI@v1
               with:
                 inlineScript: |
-                    az login --service-principal -u ${{ secrets.AZURE_CLIENT_ID }} -p ${{ secrets.AZURE_CLIENT_SECRET }} --tenant ${{ secrets.AZURE_TENANT_ID }}
                     az storage blob upload-batch \
-                      --account-name ${{ secrets.AZURE_STORAGE_ACCOUNT_NAME }} \
-                      --source ./apps/frontend/out \
-                      --destination '$web'
+                    --account-name ${{ secrets.AZURE_STORAGE_ACCOUNT_NAME }} \
+                    --source ./apps/frontend/out \
+                    --destination '$web' \
+                    --account-key ${{ secrets.AZURE_STORAGE_KEY }} \
+                    --overwrite
+
+            # 7. Cleanup
+            - name: Cleanup
+              run: rm -rf ./apps/frontend/out
