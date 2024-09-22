@@ -7,6 +7,7 @@ const __dirname = path.dirname(__filename)
 
 const nextConfig = {
     trailingSlash: true,
+    output: 'export',
     webpack: (config) => {
         config.resolve.alias = {
           ...config.resolve.alias,

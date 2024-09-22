@@ -8,7 +8,7 @@ export default function Home() {
           <div className="text-white">
             This Is a test Page for the frontend
           </div>
-          <Button label="Open alert" />
+          <Button label="Open alert Updated" />
         </div>
       </div>
     </>
