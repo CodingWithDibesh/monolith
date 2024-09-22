@@ -25,6 +25,7 @@ This is a mono repo template for building full-stack applications with [Turborep
   - [Bruno Setup](#bruno-setup)
   - [CI/CD](#cicd)
     - [Frontend](#frontend)
+  - [Creating a new release](#creating-a-new-release)
   - [Useful Links](#useful-links)
 
 ## Using this repo
@@ -53,11 +54,11 @@ yarn
 
 ### Ports Exposed
 
-- Frontend: [http://localhost:7000](http://localhost:7000)
 - Postgres: [http://localhost:7001](http://localhost:7001)
 - Backend: [http://localhost:7002](http://localhost:7002)
 - PGAdmin: [http://localhost:7003](http://localhost:7003)
 - Storybook: [http://localhost:7004](http://localhost:7004)
+- Frontend: [http://localhost:7005](http://localhost:7005)
 
 ### Development
 
@@ -245,6 +246,18 @@ Copy the `key1/key2` value and add it into github secrets under Secrets and Vari
 Create `AZURE_STORAGE_KEY` and paste the key value.
 
 Similarly, create `AZURE_STORAGE_ACCOUNT` and paste the storage account name.
+
+## Creating a new release
+
+To create a new release, follow the steps below:
+
+1. Merge all the changes to the `main` branch.
+2. Create a new release by going to the releases page.
+3. Click on the `Draft a new release` button.
+4. Add the tag version and title.
+5. Add the release notes.
+6. Click on the `Publish release` button.
+7. The release will trigger the CI/CD pipeline and deploy.
 
 ## Useful Links
 
