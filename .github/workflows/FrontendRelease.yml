@@ -33,7 +33,7 @@ jobs:
             # 4. Build the Next.js Application
             - name: Build Frontend
               working-directory: ./apps/frontend
-              run: yarn build:fe
+              run: yarn workspace frontend build
 
             # 5. Verify Build Output
             - name: Verify Build Output
