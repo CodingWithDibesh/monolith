@@ -6,8 +6,6 @@ on:
             - 'v*'       # Match tags like v1.0.0
             - 'v*-alpha' # Match tags like v1.0.0-alpha
             - 'v*-beta'  # Match tags like v1.0.0-beta
-        branches:
-          - main  # Only trigger on main branch pushes
         paths:
             - "apps/frontend/**"
             - "apps/packages/**"
