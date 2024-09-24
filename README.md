@@ -25,6 +25,8 @@ This is a mono repo template for building full-stack applications with [Turborep
   - [Bruno Setup](#bruno-setup)
   - [CI/CD](#cicd)
     - [Frontend](#frontend)
+    - [Database Setup](#database-setup)
+      - [Firewall Rules](#firewall-rules)
   - [Creating a new release](#creating-a-new-release)
   - [Useful Links](#useful-links)
 
@@ -207,7 +209,7 @@ The CI/CD pipeline is set up using Github Actions. The pipeline includes the fol
 - Under Replication, choose Locally-redundant storage (LRS) for cost-efficiency.
 - Click Review + Create and then Create.
 
-1. Enable Static Website Hosting
+2. Enable Static Website Hosting
 
 - Once the storage account is created, go to the Storage Account.
 - On the left panel, under Data Management, find Static Website.
@@ -215,7 +217,7 @@ The CI/CD pipeline is set up using Github Actions. The pipeline includes the fol
 - Set the Index document name (e.g., index.html), and if necessary, the Error document path (e.g., 404.html).
 - Click Save.
 
-1. Getting Required keys
+3. Getting Required keys
 
 Install the [Azure CLI](https://learn.microsoft.com/en-us/cli/azure/install-azure-cli) and login to your Azure account using the following command:
 
@@ -223,7 +225,7 @@ Install the [Azure CLI](https://learn.microsoft.com/en-us/cli/azure/install-azur
 az login
 ```
 
-1. Creating and assigning Role
+4. Creating and assigning Role
 
 Create a new role assignment for the storage account using the following command:
 
@@ -231,7 +233,7 @@ Create a new role assignment for the storage account using the following command
 az role assignment create --role "Storage Blob Data Contributor" --assignee <your-email> --scope /subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.Storage/storageAccounts/<storage-account-name>
 ```
 
-1. Get the Storage Account Key
+5. Get the Storage Account Key
 
 Run the following command to get the storage account key:
 
@@ -239,13 +241,54 @@ Run the following command to get the storage account key:
 az storage account keys list --account-name <storage-account-name> --resource-group <resource-group-name>
 ```
 
-1. Add the Storage Account Key to Github Secrets
+6. Add the Storage Account Key to Github Secrets
 
 Copy the `key1/key2` value and add it into github secrets under Secrets and Variables -> Actions -> Repository secrets.
 
 Create `AZURE_STORAGE_KEY` and paste the key value.
 
 Similarly, create `AZURE_STORAGE_ACCOUNT` and paste the storage account name.
+
+### Database Setup
+
+1. Create a new [Azure Database for PostgreSQL](https://learn.microsoft.com/en-us/azure/postgresql/flexible-server/quickstart-create-server-portal) server.
+2. Create a new github secret with the name `DATABASE_URL` and paste the connection string. The connection string should look like this:
+
+```bash
+postgresql://<username>:<password>@<host>:<port>/<database>?sslmode=require
+```
+
+#### Firewall Rules
+
+To ensure your backend service can connect to the PostgreSQL server, you must adjust the network firewall settings.
+
+**Backend Hosted on Azure (e.g., Azure App Service, Virtual Machines, Kubernetes):**
+
+- Enable Azure Services Access:
+- Go to your PostgreSQL Flexible Server in the Azure Portal.
+- Navigate to Networking.
+- Enable the option Allow Azure services and resources to access this server.
+This creates a firewall rule that allows all trusted Azure services (like Azure App Service or Azure Kubernetes Service) to access your database without needing to manage IP addresses manually.
+
+**Backend Hosted on Non-Azure Platforms (e.g., AWS, GCP, or any other hosting provider):**
+If your backend is hosted on a non-Azure platform (e.g., AWS, DigitalOcean, or any cloud provider):
+
+Identify the Public IP Address of your backend instance. Your hosting provider’s dashboard should display this.
+
+In the Azure Portal:
+
+- Go to PostgreSQL Flexible Server -> Networking.
+- Add the public IP address (or a range of IPs) to the allowed list of IP addresses in the firewall settings.
+  
+Example:
+
+```bash
+54.23.43.89 (Your backend's public IP address)
+```
+
+Remove IPs when no longer needed: If your backend service IP changes or rotates, you’ll need to update this manually.
+
+Tip: If your backend service uses dynamic IP addresses or is in a different network configuration, using a VPN or a Bastion Host can help maintain a static IP for secure connections.
 
 ## Creating a new release
 
